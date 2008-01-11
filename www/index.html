@@ -17,7 +17,7 @@
 
 <p>Enabling export to SVG, PDF, etc. for each diagram via <a href="http://www.graphviz.org/">Graphviz (Graph Visualization Software)</a> which will reposition all the elements per diagram.</p>
 
-<p>This project concerns XSL transformation per diagram from one XMI to several DOT files to enable the following use cases:</p>
+<p>This project concerns XSL transformation per diagram from one XMI to several DOT files to enable the following use cases</p>
 
 <ul>
 <li>Exporting an existing but large diagram to see how graphviz would present the same information but repositioned.</li>
@@ -29,8 +29,9 @@
 <h3>Related resources</h3>
 
 <ul>
-<li>The XSL file can be processed with the XSLT command line processor called xsltproc. It can be installed with <tt>apt-get install xsltproc</tt> and used in this way:<tt>xsltproc -o example-class-diagram.dot ClassDiagram2DOT.xsl example.xmi</tt>.</li>
-<li>Subsequently a diagram can be created by running: <tt>dot -Tpdf example-class-diagram.dot -oexample-class-diagram.pdf</tt> or <tt>dot -Tsvg example-class-diagram.dot -oexample-class-diagram.svg</tt></li>
+<li>An XMI and XSL file can be processed on the command line with the XSLT command line processor called xsltproc. It can be installed with <tt>apt-get install xsltproc</tt> and used in this way <tt>xsltproc -o example-class-diagram.dot ClassDiagram2DOT.xsl example.xmi</tt>.</li>
+<li>Alternatively, this can be done in Java with <tt>java net.sf.saxon.Transform -o example-class-diagram.dot example.xmi ClassDiagram2DOT.xsl</tt></li>
+<li>Subsequently a diagram can be created by running <tt>dot -Tpdf example-class-diagram.dot -oexample-class-diagram.pdf</tt> or <tt>dot -Tsvg example-class-diagram.dot -oexample-class-diagram.svg</tt></li>
 <li>The technical implementation has been inspired by <a href="http://www.aliabdelaziz.com/Reverse_Engineering_DataBase_Part_2">http://www.aliabdelaziz.com/Reverse_Engineering_DataBase_Part_2</a></li>
 </ul>
 
