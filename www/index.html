@@ -29,6 +29,8 @@
 <h3>Related resources</h3>
 
 <ul>
+<li>The XSL file can be processed with the XSLT command line processor called xsltproc. It can be installed with <tt>apt-get install xsltproc</tt> and used in this way:<tt>xsltproc -o example-class-diagram.dot ClassDiagram2DOT.xsl example.xmi</tt>.</li>
+<li>Subsequently a diagram can be created by running: <tt>dot -Tpdf example-class-diagram.dot -oexample-class-diagram.pdf</tt> or <tt>dot -Tsvg example-class-diagram.dot -oexample-class-diagram.svg</tt></li>
 <li>The technical implementation has been inspired by <a href="http://www.aliabdelaziz.com/Reverse_Engineering_DataBase_Part_2">http://www.aliabdelaziz.com/Reverse_Engineering_DataBase_Part_2</a></li>
 </ul>
 
