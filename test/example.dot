@@ -1,0 +1,112 @@
+
+  
+  
+        digraph g {
+		fontname=Helvetica
+		fontsize=10
+        graph [
+        rankdir = "LR"
+		ranksep=1.4
+		nodesep=0.9
+        ];
+        node [
+		fontname=Helvetica
+		fontsize=10
+        shape = "ellipse"
+        ];
+        edge [
+		fontname=Helvetica
+		fontsize=10
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" [
+		
+
+        label = "      +House | ~NumberOfBeds\l | +getNumberOfBeds()\l+setNumberOfBeds(theNumberOfBeds)\l "
+        shape = "record"
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" [
+		
+
+        label = "      +MobileHome |  |  "
+        shape = "record"
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [
+		
+
+        label = "      +Car | -SerialNumber\l+NumberOfDoors\l | +getSerialNumber(a, b)\l+setSerialNumber(theSerialNumber)\l "
+        shape = "record"
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078E" [
+		fontname="Helvetica-Oblique"
+
+        label = "      +Building | -Address\l+NumberOfDoors\l | +getAddress()\l+setAddress(theAddress)\l "
+        shape = "record"
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" [
+		
+
+        label = "      +Country | +Name\l |  "
+        shape = "record"
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [
+		
+
+        label = "      +Group |  |  "
+        shape = "record"
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" [
+		
+
+        label = "      +Person | +Name\l | +getName()\l+setName(theName)\l "
+        shape = "record"
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [
+        label = "«interface»\n+Drivable | +startEngine()\l+stopEngine()\l+accelerate(percentage)\l+break(percentage)\l+turnLeft(percentage)\l+turnRight(degrees)\l "
+        shape = "record"
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [
+arrowtail="diamond"arrowhead="vee"
+        id="127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D4" headlabel="+Country\l0..*\l" taillabel="#Cars\l{ordered}\l" arrowsize="1.5" 
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [
+arrowhead="none"arrowhead="none"
+        id="127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F6" headlabel="-Parent\l" taillabel="-Children\l0..*\l" arrowsize="1.5" 
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" [
+arrowhead="none"arrowhead="none"
+        id="127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000809" headlabel="+Group\l" taillabel="~Persons\l0..*\l" arrowsize="1.5" 
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [
+arrowtail="diamond"arrowhead="none"
+        id="127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000810" headlabel="+Country\l" taillabel="+Groups\l0..*\l" arrowsize="1.5" 
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [
+arrowtail="odiamond"arrowhead="none"
+        id="127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000081B" headlabel="+Owner\l" taillabel="+Cars\l0..*\l{ordered}\l" arrowsize="1.5" 
+        ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [ style="dashed" arrowhead="onormal" arrowsize=1.5 ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [ style="dashed" arrowhead="onormal" arrowsize=1.5 ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" [ arrowhead="onormal" arrowsize=1.5 ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [ arrowhead="onormal" arrowsize=1.5 ];
+    
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078E" [ arrowhead="onormal" arrowsize=1.5 ];
+    
+        }
+    
