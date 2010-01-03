@@ -1,20 +1,22 @@
 digraph "flowchart" {
-	node [width=1.25 height=1.25 ]
-	xmi [shape="note" label="XMI" width=.75 ]
-	dot [shape="note" label="DOT" width=.75 ]
-	xsl [shape="note" label="XSL" width=.75 ]
-	pdf [shape="note" label="PDF" width=.75 height=1 style=filled fillcolor="#cccccc" ]
-	svg [shape="note" label="SVG" width=.75 height=1 style=filled fillcolor="#cccccc" ]
-	png [shape="note" label="PNG" width=.75 height=1 style=filled fillcolor="#cccccc" ]
-	misc [shape="note" label="..." width=.75 height=1 style=filled fillcolor="#cccccc" ]
+	node [width=1.1 height=1.1 fixedsize=true ]
+	xmi [shape="note" label="XMI" width=.5 height=.65 ]
+	dot [shape="note" label="DOT" width=.5 height=.65 ]
+	xsl [shape="note" label="XSL" width=.5 height=.65 ]
+	pdf [shape="note" label="PDF" width=.5 height=.65 style=filled fillcolor="#cccccc" ]
+	svg [shape="note" label="SVG" width=.5 height=.65 style=filled fillcolor="#cccccc" ]
+	png [shape="note" label="PNG" width=.5 height=.65 style=filled fillcolor="#cccccc" ]
+	misc [shape="note" label="..." width=.5 height=.65 style=filled fillcolor="#cccccc" ]
 	xslt [label="XSLT\nprocessor" ]
 	graphviz [label="Graphviz" style=filled fillcolor="#cccccc" ]
 	argouml [label="ArgoUML" style=filled fillcolor="#cccccc" ]
 	poseideon [label="Poseideon\nfor\nUML" style=filled fillcolor="#cccccc" ]
 	other [label="UML\nedittor\n..." style=filled fillcolor="#cccccc" ]
+	source [label="source\ncode\nanalyser" style=filled fillcolor="#cccccc" ]
 	argouml -> xmi
 	poseideon -> xmi
 	other -> xmi
+	source -> xmi
 	xmi -> xslt
 	xsl -> xslt
 	xslt -> dot

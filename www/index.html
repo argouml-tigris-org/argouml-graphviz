@@ -15,16 +15,30 @@
 
 <h3>Mission</h3>
 
-<p>Enabling export to SVG, PDF, etc. for each diagram via <a href="http://www.graphviz.org/">Graphviz (Graph Visualization Software)</a> which will reposition all the elements per diagram.</p>
+<p>Enabling export to PDF, SVG, PNG, etcetera for each diagram via <a href="http://www.graphviz.org/">Graphviz (Graph Visualization Software)</a> which will reposition all the elements per diagram.</p>
 
-<p>This project concerns XSL transformation per diagram from one XMI to several DOT files to enable the following use cases</p>
+<p>This project concerns XSL transformation per diagram from one <a href="http://en.wikipedia.org/wiki/XMI">XMI</a> to several DOT files to enable the following use cases</p>
 
 <ul>
 <li>Exporting an existing but large diagram to see how graphviz would present the same information but repositioned.</li>
-<li>Exporting an imported diagram which lacks proper ArgoUML positioning to see how graphviz would create a diagram with positioning.</li>
+<li>Exporting an imported diagram which lacks proper positioning to see how graphviz would create a diagram with positioning.</li>
 </ul>
 
-<p>the first use case results in diagrams in an export format that advise the user how to optimise positioning and gain new insights into your currently complex design. The second will provide you with a head start when you have to do positioning from scratch.</p>
+<p>The first use case results in diagrams in an export format that advise the user how to optimise positioning and gain new insights into your currently complex design. The second will provide you with a head start when you have to do positioning from scratch.</p>
+
+<p>Below is a flowchart illustrating the flow of information for both cases.</p>
+
+<img src="flowchart.png" label="flowchart" />
+
+<h3>Example</h3>
+
+<p>An extensive example can be found in the <a href="http://argouml-graphviz.tigris.org/source/browse/argouml-graphviz/trunk/test/">test directory in the version control repository</a>. It has been created in ArgoUML and the class diagram can be seen below.</p>
+
+<img src="argouml-class-diagram.png" label="ArgoUML class diagram example" />
+
+<p>From the XMI, the following class diagram has been extracted with the XSL transformation (development version). Note that it is not yet complete.</p>
+
+<img src="graphviz-class-diagram.png" label="Graphviz class diagram example" />
 
 <h3>Related resources</h3>
 
