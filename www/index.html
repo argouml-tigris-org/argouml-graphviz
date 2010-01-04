@@ -15,18 +15,16 @@
 
 <h3>Mission</h3>
 
-<p>Enabling export to PDF, SVG, PNG, etcetera for each diagram via <a href="http://www.graphviz.org/">Graphviz (Graph Visualization Software)</a> which will reposition all the elements per diagram.</p>
+<p>Automatically position all elements from a diagram in an output-only format by means of <a href="http://www.graphviz.org/">Graphviz (Graph Visualization Software)</a>. All UML diagrams which are stored in <a href="http://en.wikipedia.org/wiki/XMI">XMI</a> format can be processed and exported to PDF, SVG, PNG, etcetera.</p>
 
-<p>This project concerns XSL transformation per diagram from one <a href="http://en.wikipedia.org/wiki/XMI">XMI</a> to several DOT files to enable the following use cases</p>
+<p>This project delivers XSL transformations for each type of diagram to answer the following use cases:</p>
 
 <ul>
-<li>Exporting an existing but large diagram to see how graphviz would present the same information but repositioned.</li>
-<li>Exporting an imported diagram which lacks proper positioning to see how graphviz would create a diagram with positioning.</li>
+<li>Have Graphviz position all elements of a very large an complex UML diagram. The alternative positioning can be used as an advice to optimise the postitioning of UML diagrams.</li>
+<li>Have Graphviz position all elements of an UML diagram which lacks positioning. The positioning can be used to understand diagrams which have no positioning to begin with and can provide a head start for manual positioning.</li>
 </ul>
 
-<p>The first use case results in diagrams in an export format that advise the user how to optimise positioning and gain new insights into your currently complex design. The second will provide you with a head start when you have to do positioning from scratch.</p>
-
-<p>Below is a flowchart illustrating the flow of information for both cases.</p>
+<p>The XSL transformations for each type of diagram can be used independently of ArgoUML and run directly on the XMI file. They will result in a DOT file which is processed by Graphviz. The flowchart below illustrates the different processes which apply for both use cases.</p>
 
 <img src="flowchart.png" label="flowchart" />
 
