@@ -177,7 +177,7 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
         <xsl:with-param name="with" select="''"/>
       </xsl:call-template>
     </xsl:variable>
-        "<xsl:value-of select="@xmi.id"/>" [<xsl:if test="@isAbstract = 'true'">fontname="Helvetica-Oblique" </xsl:if>label="<xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/> | <xsl:for-each select="UML:Classifier.feature/UML:Attribute"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/>\l</xsl:for-each> | <xsl:call-template name="printOperations"/>" shape="record" ]
+        "<xsl:value-of select="@xmi.id"/>" [<xsl:if test="@isAbstract = 'true'">fontname="Helvetica-Oblique" </xsl:if>label="<xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/> | <xsl:for-each select="UML:Classifier.feature/UML:Attribute"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:StructuralFeature.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:StructuralFeature.type/UML:Class/@xmi.idref"/></xsl:call-template>\l</xsl:for-each> | <xsl:call-template name="printOperations"/>" shape="record" ]
     </xsl:template>
 
 
