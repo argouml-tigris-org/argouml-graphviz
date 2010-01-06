@@ -2,111 +2,61 @@
   
   
         digraph g {
-		fontname=Helvetica
+		fontname="Helvetica"
 		fontsize=10
         graph [
         rankdir = "LR"
+
 		ranksep=1.4
 		nodesep=0.9
-        ];
+        ]
         node [
-		fontname=Helvetica
-		fontsize=10
+		fontname="Helvetica"
+		fontsize="10"
         shape = "ellipse"
-        ];
+        ]
         edge [
-		fontname=Helvetica
+		dir="both"
+		arrowtail="none"
+		fontname="Helvetica"
 		fontsize=10
-        ];
+        ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" [
-		
-
-        label = "      +House | ~NumberOfBeds\l | +getNumberOfBeds()\l+setNumberOfBeds(theNumberOfBeds)\l "
-        shape = "record"
-        ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" [label="+House | ~NumberOfBeds\l | +getNumberOfBeds() : int\l+setNumberOfBeds(theNumberOfBeds : int) : void\l" shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" [
-		
-
-        label = "      +MobileHome |  |  "
-        shape = "record"
-        ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" [label="+MobileHome |  | " shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [
-		
-
-        label = "      +Car | -SerialNumber\l+NumberOfDoors\l | +getSerialNumber(a, b)\l+setSerialNumber(theSerialNumber)\l "
-        shape = "record"
-        ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [label="+Car | -SerialNumber\l+NumberOfDoors\l | +getSerialNumber(a : int, b : int) : String\l+setSerialNumber(theSerialNumber : String) : void\l" shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078E" [
-		fontname="Helvetica-Oblique"
-
-        label = "      +Building | -Address\l+NumberOfDoors\l | +getAddress()\l+setAddress(theAddress)\l "
-        shape = "record"
-        ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078E" [fontname="Helvetica-Oblique" label="+Building | -Address\l+NumberOfDoors\l | +getAddress() : String\l+setAddress(theAddress : String) : void\l" shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" [
-		
-
-        label = "      +Country | +Name\l |  "
-        shape = "record"
-        ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" [label="+Country | +Name\l | " shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [
-		
-
-        label = "      +Group |  |  "
-        shape = "record"
-        ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [label="+Group |  | " shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" [
-		
-
-        label = "      +Person | +Name\l | +getName()\l+setName(theName)\l "
-        shape = "record"
-        ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" [label="+Person | +Name\l | +getName() : String\l+setName(theName : String) : void\l" shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [
-        label = "«interface»\n+Drivable | +startEngine()\l+stopEngine()\l+accelerate(percentage)\l+break(percentage)\l+turnLeft(percentage)\l+turnRight(degrees)\l "
-        shape = "record"
-        ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [label="«interface»\n+Drivable | +startEngine() : void\l+stopEngine() : void\l+accelerate(percentage : float) : void\l+break(percentage : float) : void\l+turnLeft(percentage : float) : void\l+turnRight(degrees) : void\l " shape = "record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [
-arrowtail="diamond"arrowhead="vee"
-        id="127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D4" headlabel="+Country\l0..*\l" taillabel="#Cars\l{ordered}\l" arrowsize="1.5" 
-        ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [arrowtail="diamond" arrowhead="vee" id="127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D4" headlabel="#Cars\l{ordered}\l" taillabel="+Country\l0..*\l" arrowsize="1.5" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [
-arrowhead="none"arrowhead="none"
-        id="127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F6" headlabel="-Parent\l" taillabel="-Children\l0..*\l" arrowsize="1.5" 
-        ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [arrowhead="none" arrowhead="none" id="127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F6" headlabel="-Children\l0..*\l" taillabel="-Parent\l" arrowsize="1.5" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" [
-arrowhead="none"arrowhead="none"
-        id="127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000809" headlabel="+Group\l" taillabel="~Persons\l0..*\l" arrowsize="1.5" 
-        ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" [arrowhead="none" arrowhead="none" id="127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000809" headlabel="~Persons\l0..*\l" taillabel="+Group\l" arrowsize="1.5" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [
-arrowtail="diamond"arrowhead="none"
-        id="127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000810" headlabel="+Country\l" taillabel="+Groups\l0..*\l" arrowsize="1.5" 
-        ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [arrowtail="diamond" arrowhead="none" id="127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000810" headlabel="+Groups\l0..*\l" taillabel="+Country\l" arrowsize="1.5" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [
-arrowtail="odiamond"arrowhead="none"
-        id="127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000081B" headlabel="+Owner\l" taillabel="+Cars\l0..*\l{ordered}\l" arrowsize="1.5" 
-        ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [arrowtail="odiamond" arrowhead="none" id="127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000081B" headlabel="+Cars\l0..*\l{ordered}\l" taillabel="+Owner\l" arrowsize="1.5" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [ style="dashed" arrowhead="onormal" arrowsize=1.5 ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [ style="dashed" arrowhead="onormal" arrowsize=1.5 label="«realize»"]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [ style="dashed" arrowhead="onormal" arrowsize=1.5 ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [ style="dashed" arrowhead="onormal" arrowsize=1.5 label="«realize»\n«document»"]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" [ arrowhead="onormal" arrowsize=1.5 ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" [ arrowhead="onormal" arrowsize=1.5 ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [ arrowhead="onormal" arrowsize=1.5 ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [ arrowhead="onormal" arrowsize=1.5 ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078E" [ arrowhead="onormal" arrowsize=1.5 ];
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078E" [ arrowhead="onormal" arrowsize=1.5 ]
     
         }
     

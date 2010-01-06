@@ -53,16 +53,11 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
     <xsl:template match="XMI.header"/>
     <xsl:template match="XMI.content">
         <xsl:call-template name="pre-graph"/>
-        <xsl:apply-templates
-                    select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Class" />
-        <xsl:apply-templates
-                    select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Interface" />
-        <xsl:apply-templates
-			        select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Association"/>
-        <xsl:apply-templates
-			        select="UML:Model/UML:Namespace.ownedElement/UML:Abstraction"/>
-        <xsl:apply-templates
-                    select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Generalization" />
+        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Class" />
+        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Interface" />
+        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Association"/>
+        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Abstraction"/>
+        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Generalization" />
         <xsl:call-template name="post-graph"/>
     </xsl:template>
     <xsl:template name="attributes">
@@ -74,22 +69,25 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
     </xsl:template>
     <xsl:template name="pre-graph">
         digraph g {
-		fontname=Helvetica
+		fontname="Helvetica"
 		fontsize=10
         graph [
         rankdir = "LR"
+
 		ranksep=1.4
 		nodesep=0.9
-        ];
+        ]
         node [
-		fontname=Helvetica
-		fontsize=10
+		fontname="Helvetica"
+		fontsize="10"
         shape = "ellipse"
-        ];
+        ]
         edge [
-		fontname=Helvetica
+		dir="both"
+		arrowtail="none"
+		fontname="Helvetica"
 		fontsize=10
-        ];
+        ]
     </xsl:template>
     <xsl:template name="post-graph">
         }
@@ -131,9 +129,34 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
 
 
 
+	<!-- stereotype -->
+	<xsl:template name="printStereotype">
+		<xsl:param name="stereotypeID"/>
+		<xsl:for-each select="/XMI/XMI.content/UML:Model/UML:Namespace.ownedElement/UML:Stereotype"><xsl:if test="@xmi.id = $stereotypeID"><xsl:value-of select="@name"/></xsl:if></xsl:for-each>
+		<xsl:for-each select="/XMI/XMI.content/UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Stereotype"><xsl:if test="@xmi.id = $stereotypeID"><xsl:value-of select="@name"/></xsl:if></xsl:for-each>
+	</xsl:template>
+
+
+
+	<!-- data type -->
+	<xsl:template name="printDataType">
+		<xsl:param name="datatypeID"/>
+		<xsl:for-each select="/XMI/XMI.content/UML:Model/UML:Namespace.ownedElement/UML:DataType"><xsl:if test="@xmi.id = $datatypeID"> : <xsl:value-of select="@name"/></xsl:if></xsl:for-each>
+	</xsl:template>
+
+
+
+	<!-- class -->
+	<xsl:template name="printClass">
+		<xsl:param name="classID"/>
+		<xsl:for-each select="/XMI/XMI.content/UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Class"><xsl:if test="@xmi.id = $classID"> : <xsl:value-of select="@name"/></xsl:if></xsl:for-each>
+	</xsl:template>
+
+
+
 	<!-- parameters -->
 	<xsl:template name="printOperations">
-		<xsl:for-each select="UML:Classifier.feature/UML:Operation"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/>(<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name != 'return'"><xsl:value-of select="@name"/><xsl:if test="last() != position()">, </xsl:if></xsl:if></xsl:for-each>)\l</xsl:for-each>
+		<xsl:for-each select="UML:Classifier.feature/UML:Operation"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/>(<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name != 'return'"><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template><xsl:if test="last() != position()">, </xsl:if></xsl:if></xsl:for-each>)<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name = 'return'"><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template></xsl:if></xsl:for-each>\l</xsl:for-each>
 	</xsl:template>
 
 
@@ -154,22 +177,14 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
         <xsl:with-param name="with" select="''"/>
       </xsl:call-template>
     </xsl:variable>
-        "<xsl:value-of select="@xmi.id"/>" [
-		<xsl:if test="@isAbstract = 'true'">fontname="Helvetica-Oblique"</xsl:if>
-
-        label = "      <xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/> | <xsl:for-each select="UML:Classifier.feature/UML:Attribute"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/>\l</xsl:for-each> | <xsl:call-template name="printOperations"/> "
-        shape = "record"
-        ];
+        "<xsl:value-of select="@xmi.id"/>" [<xsl:if test="@isAbstract = 'true'">fontname="Helvetica-Oblique" </xsl:if>label="<xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/> | <xsl:for-each select="UML:Classifier.feature/UML:Attribute"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/>\l</xsl:for-each> | <xsl:call-template name="printOperations"/>" shape="record" ]
     </xsl:template>
 
 
 
 	<!-- Interface -->
     <xsl:template match="UML:Namespace.ownedElement/UML:Interface">
-        "<xsl:value-of select="@xmi.id"/>" [
-        label = "«interface»\n<xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/> | <xsl:call-template name="printOperations"/> "
-        shape = "record"
-        ];
+        "<xsl:value-of select="@xmi.id"/>" [label="«interface»\n<xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/> | <xsl:call-template name="printOperations"/> " shape = "record" ]
     </xsl:template>
 
 
@@ -181,33 +196,30 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
     <xsl:template match="UML:Association">
     <xsl:variable name="f" select="UML:Association.connection/UML:AssociationEnd/UML:AssociationEnd.participant/UML:Class/@xmi.idref"/>
     <xsl:variable name="e" select="UML:Association.connection/UML:AssociationEnd"/>
-        "<xsl:value-of select="$f[1]"/>" -> "<xsl:value-of select="$f[2]"/>" [
-<xsl:choose>
-<xsl:when test="$e[1]/@aggregation = 'composite'">arrowtail="diamond"</xsl:when>
-<xsl:when test="$e[1]/@aggregation = 'aggregate'">arrowtail="odiamond"</xsl:when>
-<xsl:otherwise><xsl:choose><xsl:when test="$e[2]/@isNavigable = 'true' and $e[2]/@isNavigable = 'false'">arrowhead="vee"</xsl:when><xsl:otherwise>arrowhead="none"</xsl:otherwise></xsl:choose></xsl:otherwise>
+        "<xsl:value-of select="$f[1]"/>" -> "<xsl:value-of select="$f[2]"/>" [<xsl:choose>
+<xsl:when test="$e[1]/@aggregation = 'composite'">arrowtail="diamond" </xsl:when>
+<xsl:when test="$e[1]/@aggregation = 'aggregate'">arrowtail="odiamond" </xsl:when>
+<xsl:otherwise><xsl:choose><xsl:when test="$e[2]/@isNavigable = 'true' and $e[2]/@isNavigable = 'false'">arrowhead="vee" </xsl:when><xsl:otherwise>arrowhead="none" </xsl:otherwise></xsl:choose></xsl:otherwise>
 </xsl:choose>
 <xsl:choose>
-<xsl:when test="$e[2]/@aggregation = 'composite'">arrowhead="diamond"</xsl:when>
-<xsl:when test="$e[2]/@aggregation = 'aggregate'">arrowhead="odiamond"</xsl:when>
-<xsl:otherwise><xsl:choose><xsl:when test="$e[1]/@isNavigable = 'false' and $e[2]/@isNavigable = 'true'">arrowhead="vee"</xsl:when><xsl:otherwise>arrowhead="none"</xsl:otherwise></xsl:choose></xsl:otherwise>
-</xsl:choose>
-        id="<xsl:value-of select="@xmi.id"/>" headlabel="<xsl:call-template name="printVisibility"><xsl:with-param name="visibility" select="$e[1]/@visibility"/></xsl:call-template><xsl:value-of select="$e[1]/@name"/><xsl:variable name="m1" select="$e[1]/UML:AssociationEnd.multiplicity/UML:Multiplicity/UML:Multiplicity.range/UML:MultiplicityRange"/><xsl:if test="$m1/@lower != '1' and $m1/@upper != '1'">\l<xsl:value-of select="$m1/@lower"/>..<xsl:choose><xsl:when test="$m1/@upper = '-1'">*</xsl:when><xsl:otherwise><xsl:value-of select="$m1/@upper"/></xsl:otherwise></xsl:choose></xsl:if><xsl:if test="$e[1]/@ordering = 'ordered'">\l{ordered}</xsl:if>\l" taillabel="<xsl:call-template name="printVisibility"><xsl:with-param name="visibility" select="$e[2]/@visibility"/></xsl:call-template><xsl:value-of select="$e[2]/@name"/><xsl:variable name="m2" select="$e[2]/UML:AssociationEnd.multiplicity/UML:Multiplicity/UML:Multiplicity.range/UML:MultiplicityRange"/><xsl:if test="$m2/@lower != '1' and $m2/@upper != '1'">\l<xsl:value-of select="$m2/@lower"/>..<xsl:choose><xsl:when test="$m2/@upper = '-1'">*</xsl:when><xsl:otherwise><xsl:value-of select="$m2/@upper"/></xsl:otherwise></xsl:choose></xsl:if><xsl:if test="$e[2]/@ordering = 'ordered'">\l{ordered}</xsl:if>\l" arrowsize="1.5" <!-- no name, no newline or ordered-->
-        ];
+<xsl:when test="$e[2]/@aggregation = 'composite'">arrowhead="diamond" </xsl:when>
+<xsl:when test="$e[2]/@aggregation = 'aggregate'">arrowhead="odiamond" </xsl:when>
+<xsl:otherwise><xsl:choose><xsl:when test="$e[1]/@isNavigable = 'false' and $e[2]/@isNavigable = 'true'">arrowhead="vee" </xsl:when><xsl:otherwise>arrowhead="none" </xsl:otherwise></xsl:choose></xsl:otherwise>
+</xsl:choose>id="<xsl:value-of select="@xmi.id"/>" headlabel="<xsl:call-template name="printVisibility"><xsl:with-param name="visibility" select="$e[2]/@visibility"/></xsl:call-template><xsl:value-of select="$e[2]/@name"/><xsl:variable name="m2" select="$e[2]/UML:AssociationEnd.multiplicity/UML:Multiplicity/UML:Multiplicity.range/UML:MultiplicityRange"/><xsl:if test="$m2/@lower != '1' and $m2/@upper != '1'">\l<xsl:value-of select="$m2/@lower"/>..<xsl:choose><xsl:when test="$m2/@upper = '-1'">*</xsl:when><xsl:otherwise><xsl:value-of select="$m2/@upper"/></xsl:otherwise></xsl:choose></xsl:if><xsl:if test="$e[2]/@ordering = 'ordered'">\l{ordered}</xsl:if>\l" taillabel="<xsl:call-template name="printVisibility"><xsl:with-param name="visibility" select="$e[1]/@visibility"/></xsl:call-template><xsl:value-of select="$e[1]/@name"/><xsl:variable name="m1" select="$e[1]/UML:AssociationEnd.multiplicity/UML:Multiplicity/UML:Multiplicity.range/UML:MultiplicityRange"/><xsl:if test="$m1/@lower != '1' and $m1/@upper != '1'">\l<xsl:value-of select="$m1/@lower"/>..<xsl:choose><xsl:when test="$m1/@upper = '-1'">*</xsl:when><xsl:otherwise><xsl:value-of select="$m1/@upper"/></xsl:otherwise></xsl:choose></xsl:if><xsl:if test="$e[1]/@ordering = 'ordered'">\l{ordered}</xsl:if>\l" arrowsize="1.5" <!-- no name, no newline or ordered-->]
     </xsl:template>
 
 
 
 	<!-- Abstraction -->
     <xsl:template match="UML:Namespace.ownedElement/UML:Abstraction">
-        "<xsl:value-of select="UML:Dependency.client/UML:Class/@xmi.idref"/>" -> "<xsl:value-of select="UML:Dependency.supplier/UML:Interface/@xmi.idref"/>" [ style="dashed" arrowhead="onormal" arrowsize=1.5 ];
+        "<xsl:value-of select="UML:Dependency.client/UML:Class/@xmi.idref"/>" -> "<xsl:value-of select="UML:Dependency.supplier/UML:Interface/@xmi.idref"/>" [ style="dashed" arrowhead="onormal" arrowsize=1.5 label="<xsl:for-each select="UML:ModelElement.stereotype/UML:Stereotype">«<xsl:call-template name="printStereotype"><xsl:with-param name="stereotypeID" select="@xmi.idref"/></xsl:call-template>»<xsl:if test="last() != position()">\n</xsl:if></xsl:for-each>"]
     </xsl:template>
 
 
 
 	<!-- Generalization -->
     <xsl:template match="UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Generalization">
-        "<xsl:value-of select="UML:Generalization.child/UML:Class/@xmi.idref"/>" -> "<xsl:value-of select="UML:Generalization.parent/UML:Class/@xmi.idref"/>" [ arrowhead="onormal" arrowsize=1.5 ];
+        "<xsl:value-of select="UML:Generalization.child/UML:Class/@xmi.idref"/>" -> "<xsl:value-of select="UML:Generalization.parent/UML:Class/@xmi.idref"/>" [ arrowhead="onormal" arrowsize=1.5 ]
     </xsl:template>
 
 
