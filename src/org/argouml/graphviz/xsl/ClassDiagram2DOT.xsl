@@ -70,7 +70,7 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
     <xsl:template name="pre-graph">
         digraph g {
 		fontname="Helvetica"
-		fontsize=10
+		fontsize=9
         graph [
         rankdir = "LR"
 
@@ -79,14 +79,14 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
         ]
         node [
 		fontname="Helvetica"
-		fontsize="10"
+		fontsize=9
         shape = "ellipse"
         ]
         edge [
 		dir="both"
 		arrowtail="none"
 		fontname="Helvetica"
-		fontsize=10
+		fontsize=9
         ]
     </xsl:template>
     <xsl:template name="post-graph">

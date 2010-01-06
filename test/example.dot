@@ -3,7 +3,7 @@
   
         digraph g {
 		fontname="Helvetica"
-		fontsize=10
+		fontsize=9
         graph [
         rankdir = "LR"
 
@@ -12,14 +12,14 @@
         ]
         node [
 		fontname="Helvetica"
-		fontsize="10"
+		fontsize=9
         shape = "ellipse"
         ]
         edge [
 		dir="both"
 		arrowtail="none"
 		fontname="Helvetica"
-		fontsize=10
+		fontsize=9
         ]
     
         "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" [label="+House | ~NumberOfBeds : int\l | +getNumberOfBeds() : int\l+setNumberOfBeds(theNumberOfBeds : int) : void\l" shape="record" ]
