@@ -11,7 +11,7 @@ digraph "flowchart" {
 	graphviz [label="Graphviz" style=filled fillcolor="#cccccc" ]
 	argouml [label="ArgoUML" style=filled fillcolor="#cccccc" ]
 	poseideon [label="Poseideon\nfor\nUML" style=filled fillcolor="#cccccc" ]
-	other [label="UML\nedittor\n..." style=filled fillcolor="#cccccc" ]
+	other [label="UML\neditor\n..." style=filled fillcolor="#cccccc" ]
 	source [label="source\ncode\nanalyser" style=filled fillcolor="#cccccc" ]
 	argouml -> xmi
 	poseideon -> xmi
