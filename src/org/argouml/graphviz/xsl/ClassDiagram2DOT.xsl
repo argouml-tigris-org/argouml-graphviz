@@ -121,7 +121,7 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
 		<xsl:param name="visibility"/>
 		<xsl:choose>
 			<xsl:when test="@visibility = 'public' or $visibility = 'public'">+</xsl:when>
-			<xsl:when test="@visibility = 'private' or $visibility = 'private'">‒</xsl:when>
+			<xsl:when test="@visibility = 'private' or $visibility = 'private'">‒</xsl:when><!-- n-dash-->
 			<xsl:when test="@visibility = 'protected' or $visibility = 'protected'">#</xsl:when>
 			<xsl:when test="@visibility = 'package' or $visibility = 'package'">~</xsl:when>
 		</xsl:choose>
@@ -173,7 +173,7 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
 
 	<!-- parameters -->
 	<xsl:template name="printOperations">
-		<xsl:for-each select="UML:Classifier.feature/UML:Operation"><xsl:call-template name="printVisibilityHiddenPublic"/><xsl:value-of select="@name"/>(<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name != 'return'"><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template><xsl:if test="last() != position()">, </xsl:if></xsl:if></xsl:for-each>)<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name = 'return'"><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template></xsl:if></xsl:for-each>\l</xsl:for-each>
+		<xsl:for-each select="UML:Classifier.feature/UML:Operation"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/>(<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name != 'return'"><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template><xsl:if test="last() != position()">, </xsl:if></xsl:if></xsl:for-each>)<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name = 'return'"><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template></xsl:if></xsl:for-each>\l</xsl:for-each>
 	</xsl:template>
 
 
@@ -194,7 +194,7 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
         <xsl:with-param name="with" select="''"/>
       </xsl:call-template>
     </xsl:variable>
-        "<xsl:value-of select="@xmi.id"/>" [<xsl:if test="@isAbstract = 'true'">fontname="Helvetica-Oblique" </xsl:if>label="<xsl:call-template name="printVisibilityRemovedPublic"/><xsl:value-of select="@name"/> | <xsl:for-each select="UML:Classifier.feature/UML:Attribute"><xsl:call-template name="printVisibilityHiddenPublic"/><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:StructuralFeature.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:StructuralFeature.type/UML:Class/@xmi.idref"/></xsl:call-template>\l</xsl:for-each> | <xsl:call-template name="printOperations"/>" shape="record" ]
+        "<xsl:value-of select="@xmi.id"/>" [<xsl:if test="@isAbstract = 'true'">fontname="Helvetica-Oblique" </xsl:if>label="<xsl:call-template name="printVisibilityRemovedPublic"/><xsl:value-of select="@name"/> | <xsl:for-each select="UML:Classifier.feature/UML:Attribute"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:StructuralFeature.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:StructuralFeature.type/UML:Class/@xmi.idref"/></xsl:call-template>\l</xsl:for-each> | <xsl:call-template name="printOperations"/>" shape="record" ]
     </xsl:template>
 
 
