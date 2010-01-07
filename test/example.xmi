@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8' ?>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Thu Dec 31 18:32:32 CET 2009'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Thu Jan 07 23:44:01 CET 2010'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.28.1(6) revised on $Date: 2007-05-12 08:08:08 +0200 (Sat, 12 May 2007) $ </XMI.exporterVersion>
@@ -47,8 +47,7 @@
               </UML:Generalization.parent>
             </UML:Generalization>
             <UML:Association xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D4'
-              name = 'Cars' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
+              name = '' isSpecification = 'false' isRoot = 'false' isLeaf = 'false' isAbstract = 'false'>
               <UML:Association.connection>
                 <UML:AssociationEnd xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D5'
                   name = 'Country' visibility = 'public' isSpecification = 'false' isNavigable = 'false'
@@ -84,7 +83,8 @@
               </UML:Association.connection>
             </UML:Association>
             <UML:Association xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F6'
-              name = '' isSpecification = 'false' isRoot = 'false' isLeaf = 'false' isAbstract = 'false'>
+              name = 'GroupHierarchy' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
               <UML:Association.connection>
                 <UML:AssociationEnd xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F7'
                   name = 'Parent' visibility = 'private' isSpecification = 'false' isNavigable = 'true'
@@ -243,6 +243,10 @@
                       </UML:Multiplicity.range>
                     </UML:Multiplicity>
                   </UML:StructuralFeature.multiplicity>
+                  <UML:Attribute.initialValue>
+                    <UML:Expression xmi.id = '127-0-1-1-660bf23f:1260ae88d80:-8000:0000000000000F4F'
+                      language = '' body = '0'/>
+                  </UML:Attribute.initialValue>
                   <UML:StructuralFeature.type>
                     <UML:DataType xmi.idref = '127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007AE'/>
                   </UML:StructuralFeature.type>
@@ -366,6 +370,10 @@
                       </UML:Multiplicity.range>
                     </UML:Multiplicity>
                   </UML:StructuralFeature.multiplicity>
+                  <UML:Attribute.initialValue>
+                    <UML:Expression xmi.id = '127-0-1-1-660bf23f:1260ae88d80:-8000:0000000000000F4D'
+                      language = '' body = '2'/>
+                  </UML:Attribute.initialValue>
                   <UML:StructuralFeature.type>
                     <UML:DataType xmi.idref = '127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007AE'/>
                   </UML:StructuralFeature.type>
