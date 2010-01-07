@@ -22,31 +22,31 @@
 		fontsize=9
         ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" [label="+House | ~NumberOfBeds : int\l | +getNumberOfBeds() : int\l+setNumberOfBeds(theNumberOfBeds : int) : void\l" shape="record" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" [label="House | ~NumberOfBeds : int\l |  getNumberOfBeds() : int\l setNumberOfBeds(theNumberOfBeds : int) : void\l" shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" [label="+MobileHome |  | " shape="record" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" [label="MobileHome |  | " shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [label="+Car | -SerialNumber : int\l+NumberOfDoors : int\l | +getSerialNumber(a : int, b : int) : String\l+setSerialNumber(theSerialNumber : String) : void\l" shape="record" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [label="Car | ‒SerialNumber : int\l NumberOfDoors : int\l |  getSerialNumber(a : int, b : int) : String\l setSerialNumber(theSerialNumber : String) : void\l" shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078E" [fontname="Helvetica-Oblique" label="+Building | -Address : String\l+NumberOfDoors : int\l | +getAddress() : String\l+setAddress(theAddress : String) : void\l" shape="record" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078E" [fontname="Helvetica-Oblique" label="Building | ‒Address : String\l NumberOfDoors : int\l |  getAddress() : String\l setAddress(theAddress : String) : void\l" shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" [label="+Country | +Name : String\l | " shape="record" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" [label="Country |  Name : String\l | " shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [label="+Group |  | " shape="record" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [label="Group |  | " shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" [label="+Person | +Name : String\l | +getName() : String\l+setName(theName : String) : void\l" shape="record" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" [label="Person |  Name : String\l |  getName() : String\l setName(theName : String) : void\l" shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [label="«interface»\n+Drivable | +startEngine() : void\l+stopEngine() : void\l+accelerate(percentage : float) : void\l+break(percentage : float) : void\l+turnLeft(percentage : float) : void\l+turnRight(degrees) : void\l " shape = "record" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [label="«interface»\nDrivable |  startEngine() : void\l stopEngine() : void\l accelerate(percentage : float) : void\l break(percentage : float) : void\l turnLeft(percentage : float) : void\l turnRight(degrees) : void\l " shape = "record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [arrowtail="diamond" arrowhead="vee" id="127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D4" headlabel="#Cars\l{ordered}\l" taillabel="+Country\l0..*\l" arrowsize="1.5" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [arrowtail="diamond" arrowhead="vee" id="127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D4" headlabel="#Cars\l{ordered}\l" taillabel="Country\l0..*\l" arrowsize="1.5" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [arrowhead="none" arrowhead="none" id="127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F6" headlabel="-Children\l0..*\l" taillabel="-Parent\l" arrowsize="1.5" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [arrowhead="none" arrowhead="none" id="127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F6" headlabel="‒Children\l0..*\l" taillabel="‒Parent\l" arrowsize="1.5" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" [arrowhead="none" arrowhead="none" id="127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000809" headlabel="~Persons\l0..*\l" taillabel="+Group\l" arrowsize="1.5" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" [arrowhead="none" arrowhead="none" id="127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000809" headlabel="~Persons\l0..*\l" taillabel="Group\l" arrowsize="1.5" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [arrowtail="diamond" arrowhead="none" id="127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000810" headlabel="+Groups\l0..*\l" taillabel="+Country\l" arrowsize="1.5" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [arrowtail="diamond" arrowhead="none" id="127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000810" headlabel="Groups\l0..*\l" taillabel="Country\l" arrowsize="1.5" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [arrowtail="odiamond" arrowhead="none" id="127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000081B" headlabel="+Cars\l0..*\l{ordered}\l" taillabel="+Owner\l" arrowsize="1.5" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [arrowtail="odiamond" arrowhead="none" id="127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000081B" headlabel="Cars\l0..*\l{ordered}\l" taillabel="Owner\l" arrowsize="1.5" ]
     
         "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [ style="dashed" arrowhead="onormal" arrowsize=1.5 label="«realize»"]
     

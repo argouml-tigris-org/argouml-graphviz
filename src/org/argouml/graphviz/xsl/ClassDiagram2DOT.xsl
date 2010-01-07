@@ -121,7 +121,24 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
 		<xsl:param name="visibility"/>
 		<xsl:choose>
 			<xsl:when test="@visibility = 'public' or $visibility = 'public'">+</xsl:when>
-			<xsl:when test="@visibility = 'private' or $visibility = 'private'">-</xsl:when>
+			<xsl:when test="@visibility = 'private' or $visibility = 'private'">‒</xsl:when>
+			<xsl:when test="@visibility = 'protected' or $visibility = 'protected'">#</xsl:when>
+			<xsl:when test="@visibility = 'package' or $visibility = 'package'">~</xsl:when>
+		</xsl:choose>
+	</xsl:template>
+	<xsl:template name="printVisibilityHiddenPublic">
+		<xsl:param name="visibility"/>
+		<xsl:choose>
+			<xsl:when test="@visibility = 'public' or $visibility = 'public'"> </xsl:when><!--U+2007 Figure Space-->
+			<xsl:when test="@visibility = 'private' or $visibility = 'private'">‒</xsl:when><!-- n-dash-->
+			<xsl:when test="@visibility = 'protected' or $visibility = 'protected'">#</xsl:when>
+			<xsl:when test="@visibility = 'package' or $visibility = 'package'">~</xsl:when>
+		</xsl:choose>
+	</xsl:template>
+	<xsl:template name="printVisibilityRemovedPublic">
+		<xsl:param name="visibility"/>
+		<xsl:choose>
+			<xsl:when test="@visibility = 'private' or $visibility = 'private'">‒</xsl:when><!-- n-dash-->
 			<xsl:when test="@visibility = 'protected' or $visibility = 'protected'">#</xsl:when>
 			<xsl:when test="@visibility = 'package' or $visibility = 'package'">~</xsl:when>
 		</xsl:choose>
@@ -156,7 +173,7 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
 
 	<!-- parameters -->
 	<xsl:template name="printOperations">
-		<xsl:for-each select="UML:Classifier.feature/UML:Operation"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/>(<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name != 'return'"><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template><xsl:if test="last() != position()">, </xsl:if></xsl:if></xsl:for-each>)<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name = 'return'"><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template></xsl:if></xsl:for-each>\l</xsl:for-each>
+		<xsl:for-each select="UML:Classifier.feature/UML:Operation"><xsl:call-template name="printVisibilityHiddenPublic"/><xsl:value-of select="@name"/>(<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name != 'return'"><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template><xsl:if test="last() != position()">, </xsl:if></xsl:if></xsl:for-each>)<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name = 'return'"><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template></xsl:if></xsl:for-each>\l</xsl:for-each>
 	</xsl:template>
 
 
@@ -177,14 +194,14 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
         <xsl:with-param name="with" select="''"/>
       </xsl:call-template>
     </xsl:variable>
-        "<xsl:value-of select="@xmi.id"/>" [<xsl:if test="@isAbstract = 'true'">fontname="Helvetica-Oblique" </xsl:if>label="<xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/> | <xsl:for-each select="UML:Classifier.feature/UML:Attribute"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:StructuralFeature.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:StructuralFeature.type/UML:Class/@xmi.idref"/></xsl:call-template>\l</xsl:for-each> | <xsl:call-template name="printOperations"/>" shape="record" ]
+        "<xsl:value-of select="@xmi.id"/>" [<xsl:if test="@isAbstract = 'true'">fontname="Helvetica-Oblique" </xsl:if>label="<xsl:call-template name="printVisibilityRemovedPublic"/><xsl:value-of select="@name"/> | <xsl:for-each select="UML:Classifier.feature/UML:Attribute"><xsl:call-template name="printVisibilityHiddenPublic"/><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:StructuralFeature.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:StructuralFeature.type/UML:Class/@xmi.idref"/></xsl:call-template>\l</xsl:for-each> | <xsl:call-template name="printOperations"/>" shape="record" ]
     </xsl:template>
 
 
 
 	<!-- Interface -->
     <xsl:template match="UML:Namespace.ownedElement/UML:Interface">
-        "<xsl:value-of select="@xmi.id"/>" [label="«interface»\n<xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/> | <xsl:call-template name="printOperations"/> " shape = "record" ]
+        "<xsl:value-of select="@xmi.id"/>" [label="«interface»\n<xsl:call-template name="printVisibilityRemovedPublic"/><xsl:value-of select="@name"/> | <xsl:call-template name="printOperations"/> " shape = "record" ]
     </xsl:template>
 
 
@@ -205,7 +222,7 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
 <xsl:when test="$e[2]/@aggregation = 'composite'">arrowhead="diamond" </xsl:when>
 <xsl:when test="$e[2]/@aggregation = 'aggregate'">arrowhead="odiamond" </xsl:when>
 <xsl:otherwise><xsl:choose><xsl:when test="$e[1]/@isNavigable = 'false' and $e[2]/@isNavigable = 'true'">arrowhead="vee" </xsl:when><xsl:otherwise>arrowhead="none" </xsl:otherwise></xsl:choose></xsl:otherwise>
-</xsl:choose>id="<xsl:value-of select="@xmi.id"/>" headlabel="<xsl:call-template name="printVisibility"><xsl:with-param name="visibility" select="$e[2]/@visibility"/></xsl:call-template><xsl:value-of select="$e[2]/@name"/><xsl:variable name="m2" select="$e[2]/UML:AssociationEnd.multiplicity/UML:Multiplicity/UML:Multiplicity.range/UML:MultiplicityRange"/><xsl:if test="$m2/@lower != '1' and $m2/@upper != '1'">\l<xsl:value-of select="$m2/@lower"/>..<xsl:choose><xsl:when test="$m2/@upper = '-1'">*</xsl:when><xsl:otherwise><xsl:value-of select="$m2/@upper"/></xsl:otherwise></xsl:choose></xsl:if><xsl:if test="$e[2]/@ordering = 'ordered'">\l{ordered}</xsl:if>\l" taillabel="<xsl:call-template name="printVisibility"><xsl:with-param name="visibility" select="$e[1]/@visibility"/></xsl:call-template><xsl:value-of select="$e[1]/@name"/><xsl:variable name="m1" select="$e[1]/UML:AssociationEnd.multiplicity/UML:Multiplicity/UML:Multiplicity.range/UML:MultiplicityRange"/><xsl:if test="$m1/@lower != '1' and $m1/@upper != '1'">\l<xsl:value-of select="$m1/@lower"/>..<xsl:choose><xsl:when test="$m1/@upper = '-1'">*</xsl:when><xsl:otherwise><xsl:value-of select="$m1/@upper"/></xsl:otherwise></xsl:choose></xsl:if><xsl:if test="$e[1]/@ordering = 'ordered'">\l{ordered}</xsl:if>\l" arrowsize="1.5" <!-- no name, no newline or ordered-->]
+</xsl:choose>id="<xsl:value-of select="@xmi.id"/>" headlabel="<xsl:call-template name="printVisibilityRemovedPublic"><xsl:with-param name="visibility" select="$e[2]/@visibility"/></xsl:call-template><xsl:value-of select="$e[2]/@name"/><xsl:variable name="m2" select="$e[2]/UML:AssociationEnd.multiplicity/UML:Multiplicity/UML:Multiplicity.range/UML:MultiplicityRange"/><xsl:if test="$m2/@lower != '1' and $m2/@upper != '1'">\l<xsl:value-of select="$m2/@lower"/>..<xsl:choose><xsl:when test="$m2/@upper = '-1'">*</xsl:when><xsl:otherwise><xsl:value-of select="$m2/@upper"/></xsl:otherwise></xsl:choose></xsl:if><xsl:if test="$e[2]/@ordering = 'ordered'">\l{ordered}</xsl:if>\l" taillabel="<xsl:call-template name="printVisibilityRemovedPublic"><xsl:with-param name="visibility" select="$e[1]/@visibility"/></xsl:call-template><xsl:value-of select="$e[1]/@name"/><xsl:variable name="m1" select="$e[1]/UML:AssociationEnd.multiplicity/UML:Multiplicity/UML:Multiplicity.range/UML:MultiplicityRange"/><xsl:if test="$m1/@lower != '1' and $m1/@upper != '1'">\l<xsl:value-of select="$m1/@lower"/>..<xsl:choose><xsl:when test="$m1/@upper = '-1'">*</xsl:when><xsl:otherwise><xsl:value-of select="$m1/@upper"/></xsl:otherwise></xsl:choose></xsl:if><xsl:if test="$e[1]/@ordering = 'ordered'">\l{ordered}</xsl:if>\l" arrowsize="1.5" <!-- no name, no newline or ordered-->]
     </xsl:template>
 
 
