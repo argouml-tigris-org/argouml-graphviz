@@ -3,7 +3,7 @@
   
         digraph g {
 		fontname="Helvetica"
-		fontsize=9
+		fontsize=8.5
         graph [
         rankdir = "LR"
 
@@ -12,14 +12,15 @@
         ]
         node [
 		fontname="Helvetica"
-		fontsize=9
+		fontsize=8.5
         shape = "ellipse"
         ]
         edge [
 		dir="both"
 		arrowtail="none"
 		fontname="Helvetica"
-		fontsize=9
+		fontsize=8.5
+		arrowsize=1
         ]
     
         "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" [label="House | ~NumberOfBeds : int = 0\l | +getNumberOfBeds() : int\l+setNumberOfBeds(theNumberOfBeds : int) : void\l" shape="record" ]
@@ -38,25 +39,25 @@
     
         "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [label="«interface»\nDrivable | +startEngine() : void\l+stopEngine() : void\l+accelerate(percentage : float) : void\l+break(percentage : float) : void\l+turnLeft(percentage : float) : void\l+turnRight(degrees) : void\l " shape = "record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [arrowtail="diamond" arrowhead="vee"  headlabel="#Cars\l{ordered}\l" taillabel="+Country\l0..*\l" arrowsize="1.5" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [arrowtail="diamond" arrowhead="vee"  headlabel="#Cars\l{ordered}\l" taillabel="+Country\l0..*\l" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [arrowhead="none" arrowhead="none" label="GroupHierarchy" headlabel="‒Children\l0..*\l" taillabel="‒Parent\l" arrowsize="1.5" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [arrowhead="none" arrowhead="none" label="GroupHierarchy" headlabel="‒Children\l0..*\l" taillabel="‒Parent\l" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" [arrowhead="none" arrowhead="none"  headlabel="~Persons\l0..*\l" taillabel="+Group\l" arrowsize="1.5" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" [arrowhead="none" arrowhead="none"  headlabel="~Persons\l0..*\l" taillabel="+Group\l" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [arrowtail="diamond" arrowhead="none"  headlabel="+Groups\l0..*\l" taillabel="+Country\l" arrowsize="1.5" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2" [arrowtail="diamond" arrowhead="none"  headlabel="+Groups\l0..*\l" taillabel="+Country\l" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [arrowtail="odiamond" arrowhead="none"  headlabel="+Cars\l0..*\l{ordered}\l" taillabel="+Owner\l" arrowsize="1.5" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [arrowtail="odiamond" arrowhead="none"  headlabel="+Cars\l0..*\l{ordered}\l" taillabel="+Owner\l" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [ style="dashed" arrowhead="onormal" arrowsize=1.5 label="«realize»"]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [style="dashed" arrowhead="onormal" arrowsize=1.5 label="«realize»"]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [ style="dashed" arrowhead="onormal" arrowsize=1.5 label="«realize»\n«document»"]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [style="dashed" arrowhead="onormal" arrowsize=1.5 label="«realize»\n«document»"]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" [ arrowhead="onormal" arrowsize=1.5 ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" [arrowhead="onormal" arrowsize=1.5 ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [ arrowhead="onormal" arrowsize=1.5 ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [arrowhead="onormal" arrowsize=1.5 ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078E" [ arrowhead="onormal" arrowsize=1.5 ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078E" [arrowhead="onormal" arrowsize=1.5 ]
     
         }
     
