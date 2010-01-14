@@ -54,6 +54,7 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
     <xsl:template match="XMI.content">
         <xsl:call-template name="pre-graph"/>
         <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Class" />
+        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Comment" />
         <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Interface" />
         <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Association"/>
         <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Abstraction"/>
@@ -72,7 +73,7 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
 		fontname="Helvetica"
 		fontsize=8.5
         graph [
-        rankdir = "LR"
+        rankdir="LR"
 
 		ranksep=1.4
 		nodesep=0.9
@@ -80,7 +81,7 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
         node [
 		fontname="Helvetica"
 		fontsize=8.5
-        shape = "ellipse"
+        shape="ellipse"
         ]
         edge [
 		dir="both"
@@ -202,7 +203,16 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
 
 	<!-- Interface -->
     <xsl:template match="UML:Namespace.ownedElement/UML:Interface">
-        "<xsl:value-of select="@xmi.id"/>" [label="«interface»\n<xsl:call-template name="printVisibilityRemovedPublic"/><xsl:value-of select="@name"/> | <xsl:call-template name="printOperations"/> " shape = "record" ]
+        "<xsl:value-of select="@xmi.id"/>" [label="«interface»\n<xsl:call-template name="printVisibilityRemovedPublic"/><xsl:value-of select="@name"/> | <xsl:call-template name="printOperations"/> " shape="record" ]
+    </xsl:template>
+
+
+
+	<!-- Comment -->
+    <xsl:template match="UML:Namespace.ownedElement/UML:Comment"><xsl:variable name="coid"><xsl:value-of select="@xmi.id"/></xsl:variable>
+        "<xsl:copy-of select="$coid"/>" [label="<xsl:value-of select="@body"/>" shape= "note" ]
+        <xsl:for-each select="UML:Comment.annotatedElement/UML:Class">"<xsl:copy-of select="$coid"/>" -> "<xsl:value-of select="@xmi.idref"/>" [style="dashed" arrowhead="none" ]</xsl:for-each>
+        <xsl:for-each select="UML:Comment.annotatedElement/UML:Interface">"<xsl:copy-of select="$coid"/>" -> "<xsl:value-of select="@xmi.idref"/>" [style="dashed" arrowhead="none" ]</xsl:for-each>
     </xsl:template>
 
 

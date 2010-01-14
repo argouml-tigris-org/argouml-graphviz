@@ -5,7 +5,7 @@
 		fontname="Helvetica"
 		fontsize=8.5
         graph [
-        rankdir = "LR"
+        rankdir="LR"
 
 		ranksep=1.4
 		nodesep=0.9
@@ -13,7 +13,7 @@
         node [
 		fontname="Helvetica"
 		fontsize=8.5
-        shape = "ellipse"
+        shape="ellipse"
         ]
         edge [
 		dir="both"
@@ -37,7 +37,9 @@
     
         "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF" [label="Person | +Name : String\l | +getName() : String\l+setName(theName : String) : void\l" shape="record" ]
     
-        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [label="«interface»\nDrivable | +startEngine() : void\l+stopEngine() : void\l+accelerate(percentage : float) : void\l+break(percentage : float) : void\l+turnLeft(percentage : float) : void\l+turnRight(degrees) : void\l " shape = "record" ]
+        "127-0-1-1-20fed249:1262dd437d5:-8000:0000000000000F4D" [label="This is just dummy text for testing purposes." shape= "note" ]
+        "127-0-1-1-20fed249:1262dd437d5:-8000:0000000000000F4D" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077D" [style="dashed" arrowhead="none" ]"127-0-1-1-20fed249:1262dd437d5:-8000:0000000000000F4D" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [style="dashed" arrowhead="none" ]
+        "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000783" [label="«interface»\nDrivable | +startEngine() : void\l+stopEngine() : void\l+accelerate(percentage : float) : void\l+break(percentage : float) : void\l+turnLeft(percentage : float) : void\l+turnRight(degrees) : void\l " shape="record" ]
     
         "127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007D2" -> "127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000781" [arrowtail="diamond" arrowhead="vee"  headlabel="#Cars\l{ordered}\l" taillabel="+Country\l0..*\l" ]
     
