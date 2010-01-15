@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8' ?>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Thu Jan 14 19:05:13 CET 2010'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Jan 15 13:20:52 CET 2010'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.28.1(6) revised on $Date: 2007-05-12 08:08:08 +0200 (Sat, 12 May 2007) $ </XMI.exporterVersion>
@@ -9,10 +9,28 @@
     <UML:Model xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077B'
       name = 'untitledModel' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
       isAbstract = 'false'>
+      <UML:ModelElement.taggedValue>
+        <UML:TaggedValue xmi.id = '127-0-1-1--4aa4cce5:12631dd94bf:-8000:0000000000000FA9'
+          isSpecification = 'false'>
+          <UML:TaggedValue.dataValue>[&apos;0&apos;, &apos;1&apos;]</UML:TaggedValue.dataValue>
+          <UML:TaggedValue.type>
+            <UML:TagDefinition href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:000000000000087C'/>
+          </UML:TaggedValue.type>
+        </UML:TaggedValue>
+      </UML:ModelElement.taggedValue>
       <UML:Namespace.ownedElement>
         <UML:Package xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077C'
           name = 'Class Diagram example' isSpecification = 'false' isRoot = 'false'
           isLeaf = 'false' isAbstract = 'false'>
+          <UML:ModelElement.taggedValue>
+            <UML:TaggedValue xmi.id = '127-0-1-1-28cc6941:12631ad48c8:-8000:0000000000000FAD'
+              isSpecification = 'false'>
+              <UML:TaggedValue.dataValue>1</UML:TaggedValue.dataValue>
+              <UML:TaggedValue.type>
+                <UML:TagDefinition href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-64--88-0-101--2259be85:11dd526880c:-8000:000000000000E4B0'/>
+              </UML:TaggedValue.type>
+            </UML:TaggedValue>
+          </UML:ModelElement.taggedValue>
           <UML:Namespace.ownedElement>
             <UML:Stereotype xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078A'
               name = 'realize' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
@@ -29,7 +47,7 @@
               </UML:Generalization.parent>
             </UML:Generalization>
             <UML:Generalization xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078C'
-              isSpecification = 'false'>
+              name = '' isSpecification = 'false'>
               <UML:Generalization.child>
                 <UML:Class xmi.idref = '127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F'/>
               </UML:Generalization.child>
@@ -191,6 +209,15 @@
             </UML:Association>
             <UML:Association xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000081B'
               name = '' isSpecification = 'false' isRoot = 'false' isLeaf = 'false' isAbstract = 'false'>
+              <UML:ModelElement.taggedValue>
+                <UML:TaggedValue xmi.id = '127-0-1-1-28cc6941:12631ad48c8:-8000:0000000000000FA9'
+                  isSpecification = 'false'>
+                  <UML:TaggedValue.dataValue>0</UML:TaggedValue.dataValue>
+                  <UML:TaggedValue.type>
+                    <UML:TagDefinition href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-64--88-0-101--2259be85:11dd526880c:-8000:000000000000E4AA'/>
+                  </UML:TaggedValue.type>
+                </UML:TaggedValue>
+              </UML:ModelElement.taggedValue>
               <UML:Association.connection>
                 <UML:AssociationEnd xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000081C'
                   name = 'Owner' visibility = 'public' isSpecification = 'false' isNavigable = 'true'
@@ -258,6 +285,15 @@
                   name = 'getNumberOfBeds' visibility = 'public' isSpecification = 'false'
                   ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
                   isLeaf = 'false' isAbstract = 'false'>
+                  <UML:ModelElement.taggedValue>
+                    <UML:TaggedValue xmi.id = '127-0-1-1-2d5555cd:1262f2dff89:-8000:0000000000000F55'
+                      isSpecification = 'false'>
+                      <UML:TaggedValue.dataValue>-1</UML:TaggedValue.dataValue>
+                      <UML:TaggedValue.type>
+                        <UML:TagDefinition href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-64--88-0-101--2259be85:11dd526880c:-8000:000000000000E4B0'/>
+                      </UML:TaggedValue.type>
+                    </UML:TaggedValue>
+                  </UML:ModelElement.taggedValue>
                   <UML:BehavioralFeature.parameter>
                     <UML:Parameter xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007C8'
                       name = 'return' isSpecification = 'false' kind = 'return'>
@@ -286,11 +322,33 @@
                     </UML:Parameter>
                   </UML:BehavioralFeature.parameter>
                 </UML:Operation>
+                <UML:Attribute xmi.id = '127-0-1-1-2d5555cd:1262f2dff89:-8000:0000000000000F50'
+                  name = 'newAttr' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+                  changeability = 'changeable' targetScope = 'instance'>
+                  <UML:StructuralFeature.multiplicity>
+                    <UML:Multiplicity xmi.id = '127-0-1-1-2d5555cd:1262f2dff89:-8000:0000000000000F51'>
+                      <UML:Multiplicity.range>
+                        <UML:MultiplicityRange xmi.id = '127-0-1-1-2d5555cd:1262f2dff89:-8000:0000000000000F52'
+                          lower = '1' upper = '1'/>
+                      </UML:Multiplicity.range>
+                    </UML:Multiplicity>
+                  </UML:StructuralFeature.multiplicity>
+                  <UML:Attribute.initialValue>
+                    <UML:Expression xmi.id = '127-0-1-1-2d5555cd:1262f2dff89:-8000:0000000000000F56'
+                      language = '' body = ''/>
+                  </UML:Attribute.initialValue>
+                  <UML:StructuralFeature.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087C'/>
+                  </UML:StructuralFeature.type>
+                </UML:Attribute>
               </UML:Classifier.feature>
             </UML:Class>
             <UML:Class xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000077F'
               name = 'MobileHome' visibility = 'public' isSpecification = 'false' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+              <UML:ModelElement.stereotype>
+                <UML:Stereotype href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:0000000000000875'/>
+              </UML:ModelElement.stereotype>
               <UML:GeneralizableElement.generalization>
                 <UML:Generalization xmi.idref = '127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078B'/>
                 <UML:Generalization xmi.idref = '127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078C'/>
@@ -339,6 +397,10 @@
                       </UML:Multiplicity.range>
                     </UML:Multiplicity>
                   </UML:StructuralFeature.multiplicity>
+                  <UML:Attribute.initialValue>
+                    <UML:Expression xmi.id = '127-0-1-1-28cc6941:12631ad48c8:-8000:0000000000000FA8'
+                      language = '' body = ''/>
+                  </UML:Attribute.initialValue>
                   <UML:StructuralFeature.type>
                     <UML:DataType xmi.idref = '127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007AE'/>
                   </UML:StructuralFeature.type>
@@ -389,6 +451,18 @@
               <UML:ModelElement.comment>
                 <UML:Comment xmi.idref = '127-0-1-1-20fed249:1262dd437d5:-8000:0000000000000F4D'/>
               </UML:ModelElement.comment>
+              <UML:ModelElement.stereotype>
+                <UML:Stereotype href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:000000000000084B'/>
+              </UML:ModelElement.stereotype>
+              <UML:ModelElement.taggedValue>
+                <UML:TaggedValue xmi.id = '127-0-1-1-2d5555cd:1262f2dff89:-8000:0000000000000F57'
+                  isSpecification = 'false'>
+                  <UML:TaggedValue.dataValue>null</UML:TaggedValue.dataValue>
+                  <UML:TaggedValue.type>
+                    <UML:TagDefinition href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-64--88-0-101--2259be85:11dd526880c:-8000:000000000000E4B3'/>
+                  </UML:TaggedValue.type>
+                </UML:TaggedValue>
+              </UML:ModelElement.taggedValue>
               <UML:Classifier.feature>
                 <UML:Operation xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:0000000000000794'
                   name = 'startEngine' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
@@ -505,6 +579,22 @@
                       </UML:Multiplicity.range>
                     </UML:Multiplicity>
                   </UML:StructuralFeature.multiplicity>
+                  <UML:ModelElement.taggedValue>
+                    <UML:TaggedValue xmi.id = '127-0-1-1-2d5555cd:1262f2dff89:-8000:0000000000000F4E'
+                      isSpecification = 'false'>
+                      <UML:TaggedValue.dataValue>1</UML:TaggedValue.dataValue>
+                      <UML:TaggedValue.type>
+                        <UML:TagDefinition href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-64--88-0-101--2259be85:11dd526880c:-8000:000000000000E4B0'/>
+                      </UML:TaggedValue.type>
+                    </UML:TaggedValue>
+                    <UML:TaggedValue xmi.id = '127-0-1-1-28cc6941:12631ad48c8:-8000:0000000000000FAB'
+                      isSpecification = 'false'>
+                      <UML:TaggedValue.dataValue>yes</UML:TaggedValue.dataValue>
+                      <UML:TaggedValue.type>
+                        <UML:TagDefinition href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-64--88-0-101--2259be85:11dd526880c:-8000:000000000000E4AD'/>
+                      </UML:TaggedValue.type>
+                    </UML:TaggedValue>
+                  </UML:ModelElement.taggedValue>
                   <UML:StructuralFeature.type>
                     <UML:Class xmi.idref = '127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007AD'/>
                   </UML:StructuralFeature.type>
@@ -581,7 +671,17 @@
             </UML:Class>
             <UML:Class xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007F2'
               name = 'Group' visibility = 'public' isSpecification = 'false' isRoot = 'false'
-              isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+              <UML:ModelElement.taggedValue>
+                <UML:TaggedValue xmi.id = '127-0-1-1-2d5555cd:1262f2dff89:-8000:0000000000000F53'
+                  isSpecification = 'false'>
+                  <UML:TaggedValue.dataValue>Some other dummy text.</UML:TaggedValue.dataValue>
+                  <UML:TaggedValue.type>
+                    <UML:TagDefinition href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:000000000000087C'/>
+                  </UML:TaggedValue.type>
+                </UML:TaggedValue>
+              </UML:ModelElement.taggedValue>
+            </UML:Class>
             <UML:Class xmi.id = '127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF'
               name = 'Person' visibility = 'public' isSpecification = 'false' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
@@ -677,11 +777,20 @@
           name = 'int' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
           isAbstract = 'false'/>
         <UML:Abstraction xmi.id = '127-0-1-1-65e3c9b6:1173cab2605:-8000:0000000000000853'
-          isSpecification = 'false'>
+          name = 'Special' isSpecification = 'false'>
           <UML:ModelElement.stereotype>
             <UML:Stereotype xmi.idref = '127-0-1-1--6741fdc4:11701e7285e:-8000:000000000000078A'/>
             <UML:Stereotype xmi.idref = '127-0-1-1-65e3c9b6:1173cab2605:-8000:0000000000000856'/>
           </UML:ModelElement.stereotype>
+          <UML:ModelElement.taggedValue>
+            <UML:TaggedValue xmi.id = '127-0-1-1-2d5555cd:1262f2dff89:-8000:0000000000000F58'
+              isSpecification = 'false'>
+              <UML:TaggedValue.dataValue>Very important.</UML:TaggedValue.dataValue>
+              <UML:TaggedValue.type>
+                <UML:TagDefinition href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:000000000000087C'/>
+              </UML:TaggedValue.type>
+            </UML:TaggedValue>
+          </UML:ModelElement.taggedValue>
           <UML:Dependency.client>
             <UML:Class xmi.idref = '127-0-1-1--6741fdc4:11701e7285e:-8000:00000000000007FF'/>
           </UML:Dependency.client>

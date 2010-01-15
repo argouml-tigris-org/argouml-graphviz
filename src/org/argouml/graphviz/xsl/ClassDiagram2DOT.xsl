@@ -27,7 +27,7 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:xdt="http://www.w3.org/2005/02/xpath-datatypes"
 	xmlns:UML="org.omg.xmi.namespace.UML" exclude-result-prefixes="xs xdt UML">
-    <xsl:output method="text" media-type="text/xml" indent="yes" encoding="utf-8" />
+    <xsl:output method="text" media-type="text/xml" indent="yes" encoding="utf-8"/>
     <xsl:variable name="from" select="0"/>
     <xsl:variable name="to" select="NON"/>
 	<xsl:template name="replace-string">
@@ -53,12 +53,13 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
     <xsl:template match="XMI.header"/>
     <xsl:template match="XMI.content">
         <xsl:call-template name="pre-graph"/>
-        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Class" />
-        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Comment" />
-        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Interface" />
+        <xsl:apply-templates select="UML:Model"/>
+        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Class"/>
+        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Comment"/>
+        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Interface"/>
         <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Association"/>
         <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Abstraction"/>
-        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Generalization" />
+        <xsl:apply-templates select="UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Generalization"/>
         <xsl:call-template name="post-graph"/>
     </xsl:template>
     <xsl:template name="attributes">
@@ -91,6 +92,11 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
 		arrowsize=1
         ]
     </xsl:template>
+	<!-- Model -->
+        <xsl:template match="UML:Model">
+                labelloc="t"
+                label="<xsl:value-of select="@name"/>\l<xsl:call-template name="printTaggedValueLeft"/>\l"
+        </xsl:template>
     <xsl:template name="post-graph">
         }
     </xsl:template>
@@ -149,10 +155,43 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
 
 
 	<!-- stereotype -->
+	<xsl:template name="lookupStereotype">
+		<xsl:choose><!--TODO this should be an automated lookup, also for ArchGenXML-->
+			<xsl:when test="@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:0000000000000834'">realize</xsl:when>
+			<xsl:when test="@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:0000000000000837'">document</xsl:when>
+			<xsl:when test="@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:0000000000000840'">implementation</xsl:when>
+			<xsl:when test="@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:0000000000000847'">metaclass</xsl:when>
+			<xsl:when test="@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:0000000000000848'">powertype</xsl:when>
+			<xsl:when test="@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:0000000000000849'">process</xsl:when>
+			<xsl:when test="@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:000000000000084A'">thread</xsl:when>
+			<xsl:when test="@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:000000000000084B'">utility</xsl:when>
+			<xsl:when test="@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:0000000000000875'">auxiliary</xsl:when>
+		</xsl:choose>
+	</xsl:template>
 	<xsl:template name="printStereotype">
 		<xsl:param name="stereotypeID"/>
 		<xsl:for-each select="/XMI/XMI.content/UML:Model/UML:Namespace.ownedElement/UML:Stereotype"><xsl:if test="@xmi.id = $stereotypeID"><xsl:value-of select="@name"/></xsl:if></xsl:for-each>
 		<xsl:for-each select="/XMI/XMI.content/UML:Model/UML:Namespace.ownedElement/UML:Package/UML:Namespace.ownedElement/UML:Stereotype"><xsl:if test="@xmi.id = $stereotypeID"><xsl:value-of select="@name"/></xsl:if></xsl:for-each>
+	</xsl:template>
+
+
+
+	<!-- tagged value -->
+	<xsl:template name="lookupTaggedValue">
+		<xsl:choose><!--TODO this should be an automated lookup, also for ArchGenXML-->
+			<xsl:when test="UML:TaggedValue.type/UML:TagDefinition/@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#.:000000000000087C'">documentation</xsl:when>
+			<xsl:when test="UML:TaggedValue.type/UML:TagDefinition/@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-64--88-0-101--2259be85:11dd526880c:-8000:000000000000E4A7'">derived</xsl:when>
+			<xsl:when test="UML:TaggedValue.type/UML:TagDefinition/@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-64--88-0-101--2259be85:11dd526880c:-8000:000000000000E4AA'">persistence</xsl:when>
+			<xsl:when test="UML:TaggedValue.type/UML:TagDefinition/@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-64--88-0-101--2259be85:11dd526880c:-8000:000000000000E4AD'">persistent</xsl:when>
+			<xsl:when test="UML:TaggedValue.type/UML:TagDefinition/@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-64--88-0-101--2259be85:11dd526880c:-8000:000000000000E4B3'">usage</xsl:when>
+			<xsl:when test="UML:TaggedValue.type/UML:TagDefinition/@href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-64--88-0-101--2259be85:11dd526880c:-8000:000000000000E4B0'">semantics</xsl:when>
+		</xsl:choose>
+	</xsl:template>
+	<xsl:template name="printTaggedValue">
+		<xsl:for-each select="UML:ModelElement.taggedValue/UML:TaggedValue">  <!--U+2007 Figure Space--><xsl:call-template name="lookupTaggedValue"/> = <xsl:value-of select="UML:TaggedValue.dataValue"/>\n</xsl:for-each>
+	</xsl:template>
+	<xsl:template name="printTaggedValueLeft">
+		<xsl:for-each select="UML:ModelElement.taggedValue/UML:TaggedValue">  <!--U+2007 Figure Space--><xsl:call-template name="lookupTaggedValue"/> = <xsl:value-of select="UML:TaggedValue.dataValue"/>\l</xsl:for-each>
 	</xsl:template>
 
 
@@ -175,7 +214,7 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
 
 	<!-- parameters -->
 	<xsl:template name="printOperations">
-		<xsl:for-each select="UML:Classifier.feature/UML:Operation"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/>(<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name != 'return'"><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template><xsl:if test="last() != position()">, </xsl:if></xsl:if></xsl:for-each>)<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name = 'return'"><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template></xsl:if></xsl:for-each>\l</xsl:for-each>
+		<xsl:for-each select="UML:Classifier.feature/UML:Operation"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/>(<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name != 'return'"><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template><xsl:if test="last() != position()">, </xsl:if></xsl:if></xsl:for-each>)<xsl:for-each select="UML:BehavioralFeature.parameter/UML:Parameter"><xsl:if test="@name = 'return'"><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:Parameter.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:Parameter.type/UML:Class/@xmi.idref"/></xsl:call-template></xsl:if></xsl:for-each>\l<xsl:call-template name="printTaggedValueLeft"/></xsl:for-each>
 	</xsl:template>
 
 
@@ -196,14 +235,14 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
         <xsl:with-param name="with" select="''"/>
       </xsl:call-template>
     </xsl:variable>
-        "<xsl:value-of select="@xmi.id"/>" [<xsl:if test="@isAbstract = 'true'">fontname="Helvetica-Oblique" </xsl:if>label="<xsl:call-template name="printVisibilityRemovedPublic"/><xsl:value-of select="@name"/> | <xsl:for-each select="UML:Classifier.feature/UML:Attribute"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:StructuralFeature.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:StructuralFeature.type/UML:Class/@xmi.idref"/></xsl:call-template><xsl:if test="UML:Attribute.initialValue/UML:Expression/@body != ''"> = <xsl:value-of select="UML:Attribute.initialValue/UML:Expression/@body"/></xsl:if>\l</xsl:for-each> | <xsl:call-template name="printOperations"/>" shape="record" ]
+        "<xsl:value-of select="@xmi.id"/>" [<xsl:if test="@isAbstract = 'true'">fontname="Helvetica-Oblique" <!--TODO only first record should be italics--></xsl:if>label="<xsl:for-each select="UML:ModelElement.stereotype/UML:Stereotype">«<xsl:call-template name="lookupStereotype"/>»\n</xsl:for-each><xsl:call-template name="printVisibilityRemovedPublic"/><xsl:value-of select="@name"/>\n<xsl:call-template name="printTaggedValueLeft"/> | <xsl:for-each select="UML:Classifier.feature/UML:Attribute"><xsl:call-template name="printVisibility"/><xsl:value-of select="@name"/><xsl:call-template name="printDataType"><xsl:with-param name="datatypeID" select="UML:StructuralFeature.type/UML:DataType/@xmi.idref"/></xsl:call-template><xsl:call-template name="printClass"><xsl:with-param name="classID" select="UML:StructuralFeature.type/UML:Class/@xmi.idref"/></xsl:call-template><xsl:if test="UML:Attribute.initialValue/UML:Expression/@body != ''"> = <xsl:value-of select="UML:Attribute.initialValue/UML:Expression/@body"/></xsl:if>\l<xsl:call-template name="printTaggedValueLeft"/></xsl:for-each> | <xsl:call-template name="printOperations"/>" shape="record" ]
     </xsl:template>
 
 
 
 	<!-- Interface -->
     <xsl:template match="UML:Namespace.ownedElement/UML:Interface">
-        "<xsl:value-of select="@xmi.id"/>" [label="«interface»\n<xsl:call-template name="printVisibilityRemovedPublic"/><xsl:value-of select="@name"/> | <xsl:call-template name="printOperations"/> " shape="record" ]
+        "<xsl:value-of select="@xmi.id"/>" [label="«interface»\n<xsl:for-each select="UML:ModelElement.stereotype/UML:Stereotype">«<xsl:call-template name="lookupStereotype"/>»\n</xsl:for-each><xsl:call-template name="printVisibilityRemovedPublic"/><xsl:value-of select="@name"/>\n<xsl:call-template name="printTaggedValueLeft"/> | <xsl:call-template name="printOperations"/> " shape="record" ]
     </xsl:template>
 
 
@@ -233,14 +272,14 @@ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.-->
 <xsl:when test="$e[2]/@aggregation = 'composite'">arrowhead="diamond" </xsl:when>
 <xsl:when test="$e[2]/@aggregation = 'aggregate'">arrowhead="odiamond" </xsl:when>
 <xsl:otherwise><xsl:choose><xsl:when test="$e[1]/@isNavigable = 'false' and $e[2]/@isNavigable = 'true'">arrowhead="vee" </xsl:when><xsl:otherwise>arrowhead="none" </xsl:otherwise></xsl:choose></xsl:otherwise>
-</xsl:choose><xsl:if test="@name != ''">label="<xsl:value-of select="@name"/>"</xsl:if> headlabel="<xsl:call-template name="printVisibility"><xsl:with-param name="visibility" select="$e[2]/@visibility"/></xsl:call-template><xsl:value-of select="$e[2]/@name"/><xsl:variable name="m2" select="$e[2]/UML:AssociationEnd.multiplicity/UML:Multiplicity/UML:Multiplicity.range/UML:MultiplicityRange"/><xsl:if test="$m2/@lower != '1' and $m2/@upper != '1'">\l<xsl:value-of select="$m2/@lower"/>..<xsl:choose><xsl:when test="$m2/@upper = '-1'">*</xsl:when><xsl:otherwise><xsl:value-of select="$m2/@upper"/></xsl:otherwise></xsl:choose></xsl:if><xsl:if test="$e[2]/@ordering = 'ordered'">\l{ordered}</xsl:if>\l" taillabel="<xsl:call-template name="printVisibility"><xsl:with-param name="visibility" select="$e[1]/@visibility"/></xsl:call-template><xsl:value-of select="$e[1]/@name"/><xsl:variable name="m1" select="$e[1]/UML:AssociationEnd.multiplicity/UML:Multiplicity/UML:Multiplicity.range/UML:MultiplicityRange"/><xsl:if test="$m1/@lower != '1' and $m1/@upper != '1'">\l<xsl:value-of select="$m1/@lower"/>..<xsl:choose><xsl:when test="$m1/@upper = '-1'">*</xsl:when><xsl:otherwise><xsl:value-of select="$m1/@upper"/></xsl:otherwise></xsl:choose></xsl:if><xsl:if test="$e[1]/@ordering = 'ordered'">\l{ordered}</xsl:if>\l" <!-- no name, no newline or ordered-->]
+</xsl:choose>label="<xsl:value-of select="@name"/>\n<xsl:call-template name="printTaggedValue"/>" headlabel="<xsl:call-template name="printVisibility"><xsl:with-param name="visibility" select="$e[2]/@visibility"/></xsl:call-template><xsl:value-of select="$e[2]/@name"/><xsl:variable name="m2" select="$e[2]/UML:AssociationEnd.multiplicity/UML:Multiplicity/UML:Multiplicity.range/UML:MultiplicityRange"/><xsl:if test="$m2/@lower != '1' and $m2/@upper != '1'">\l<xsl:value-of select="$m2/@lower"/>..<xsl:choose><xsl:when test="$m2/@upper = '-1'">*</xsl:when><xsl:otherwise><xsl:value-of select="$m2/@upper"/></xsl:otherwise></xsl:choose></xsl:if><xsl:if test="$e[2]/@ordering = 'ordered'">\l{ordered}</xsl:if>\l" taillabel="<xsl:call-template name="printVisibility"><xsl:with-param name="visibility" select="$e[1]/@visibility"/></xsl:call-template><xsl:value-of select="$e[1]/@name"/><xsl:variable name="m1" select="$e[1]/UML:AssociationEnd.multiplicity/UML:Multiplicity/UML:Multiplicity.range/UML:MultiplicityRange"/><xsl:if test="$m1/@lower != '1' and $m1/@upper != '1'">\l<xsl:value-of select="$m1/@lower"/>..<xsl:choose><xsl:when test="$m1/@upper = '-1'">*</xsl:when><xsl:otherwise><xsl:value-of select="$m1/@upper"/></xsl:otherwise></xsl:choose></xsl:if><xsl:if test="$e[1]/@ordering = 'ordered'">\l{ordered}</xsl:if>\l" <!-- no name, no newline or ordered-->]
     </xsl:template>
 
 
 
 	<!-- Abstraction -->
     <xsl:template match="UML:Namespace.ownedElement/UML:Abstraction">
-        "<xsl:value-of select="UML:Dependency.client/UML:Class/@xmi.idref"/>" -> "<xsl:value-of select="UML:Dependency.supplier/UML:Interface/@xmi.idref"/>" [style="dashed" arrowhead="onormal" arrowsize=1.5 label="<xsl:for-each select="UML:ModelElement.stereotype/UML:Stereotype">«<xsl:call-template name="printStereotype"><xsl:with-param name="stereotypeID" select="@xmi.idref"/></xsl:call-template>»<xsl:if test="last() != position()">\n</xsl:if></xsl:for-each>"]
+        "<xsl:value-of select="UML:Dependency.client/UML:Class/@xmi.idref"/>" -> "<xsl:value-of select="UML:Dependency.supplier/UML:Interface/@xmi.idref"/>" [style="dashed" arrowhead="onormal" arrowsize=1.5 label="<xsl:for-each select="UML:ModelElement.stereotype/UML:Stereotype">«<xsl:call-template name="printStereotype"><xsl:with-param name="stereotypeID" select="@xmi.idref"/></xsl:call-template>»\n</xsl:for-each><xsl:call-template name="printTaggedValue"/>"]
     </xsl:template>
 
 
